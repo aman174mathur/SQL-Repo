@@ -20,8 +20,10 @@ select * from titles;
 select	emp_no , first_name from employees where emp_no in (select emp_no from titles where title = 'SENIOR ENGINEER');
 
 -- get the name of emp and dob for the person who has started working in 1986 
-
-
+select concat(first_name ," " , last_name) as full_name , e.birth_date , from_date from employees as e join titles as t 
+on e.emp_no = t.emp_no 
+where year(from_date)=1986;
+   
 -- get all the employee information only for that employee who have worked on 3 or positions 
-
+select * from employees where emp_no in (select emp_no from titles group by emp_no having count(distinct title)>=3);
 
