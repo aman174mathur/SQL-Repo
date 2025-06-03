@@ -16,6 +16,7 @@ from payment;
 
 
 -- where ranking is third 
+-- suquery in from = subquery can be used in from 
 select * from 
 (
 	select payment_id , customer_id , amount , 
@@ -24,7 +25,7 @@ select * from
 		as rank_2
 	from payment) as tab where rank_2=3;
 
--- dta query? 
+-- data query? 
 -- how to insert and update data 
 use sakila;
 create table xyz(id int , fname varchar(20) );
@@ -61,6 +62,7 @@ drop table xyz ;
 
 
 -- constraints = rules set oncolumns 
+-- 
 -- these rules control data that can be stores in a column 
 
 -- not null = values can not null 
@@ -71,4 +73,16 @@ drop table xyz ;
 -- default = set default value if not passed 
 -- create index = used to speedup the read process 
 
+-- null 
+use sakila;
+create table xyz1(id int not null , fname varchar(20) );
+insert into xyz1 values(1, "tushar");
+insert into xyz1 values(null, "tushar");
+
+select* from xyz1;
+
+-- unique 
+create table xyz2(id int not null , fname varchar(20) unique);
+insert into xyz2 values(1, "tushar");
+insert into xyz2 values(2, "tushar");
 
